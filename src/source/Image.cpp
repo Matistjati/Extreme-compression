@@ -1,6 +1,8 @@
 #include "headers/Image.h"
 #include <stdexcept>
 #include <iostream>
+#include "headers/Debug.h"
+
 
 Image::Image(int width, int height, std::vector<Pixel> pixels) : width(width), height(height), pixels(pixels), pixelsInitialized(false), hasAlpha(false)
 {}
@@ -12,6 +14,12 @@ Image::Image(std::string filePath) : pixelsInitialized(true)
 	png_bytep* row_pointers = NULL;
 
 	FILE* fp = fopen(filePath.c_str(), "rb");
+
+	if (!fp)
+	{
+		std::cout << "Could not find file " << filePath << "\n";
+		breakpoint;
+	}
 
 	png_structp png = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL, NULL, NULL);
 	if (!png) abort();

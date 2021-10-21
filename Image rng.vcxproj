@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Image rng.cpp" />
+    <ClCompile Include="src\source\Compress.cpp" />
     <ClCompile Include="src\source\Image.cpp" />
   </ItemGroup>
   <ItemGroup>

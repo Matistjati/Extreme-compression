@@ -8,6 +8,12 @@
 
 using namespace std;
 
+struct Numbers
+{
+	short amount;
+
+};
+
 void testRng()
 {
 	std::random_device dev;
@@ -23,10 +29,14 @@ void testRng()
 	{
 		int a = dist6(rng);
 		n++;
-		auto End = std::chrono::high_resolution_clock::now();
-		std::chrono::duration<double, std::milli> Elapsed = End - Start;
-		if (Elapsed.count() >= 1000.0)
-			break;
+		if (n%1000)
+		{
+			auto End = std::chrono::high_resolution_clock::now();
+			std::chrono::duration<double, std::milli> Elapsed = End - Start;
+			if (Elapsed.count() >= 1000.0)
+				break;
+		}
+		
 	}
 	cout << n;
 }
@@ -36,7 +46,7 @@ void testRng()
 int main()
 {
 
-
+	testRng();
 
 
     Image image("in.png");
